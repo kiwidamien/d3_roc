@@ -10,6 +10,7 @@ const SummaryViewer = (props) => {
   return (
   <div className='summary_area'>
     <table>
+      <tbody>
       <tr>
         <td>True positive rate:</td><td>{payback.accepted}/{payback.total} = {printDecimal(payback.accepted/payback.total)}</td>
       </tr>
@@ -22,6 +23,7 @@ const SummaryViewer = (props) => {
       <tr>
         <td>Recall:</td><td>{payback.accepted}/{payback.total} = {printDecimal(payback.accepted/payback.total)}</td>
       </tr>
+      </tbody>
     </table>
   </div>
   );
