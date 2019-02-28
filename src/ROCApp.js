@@ -20,7 +20,11 @@ class ROCApp extends Component {
         <LabelReporter
           threshold={800}
         />
-        <Plot/>
+        <div className='plot_area'>
+        <Plot
+          size={[500,500]}
+        />
+        </div>
         <TableReporter
           payback={payback}
           noPayback={noPayback}
