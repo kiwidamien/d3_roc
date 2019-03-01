@@ -12,17 +12,20 @@ class ROCApp extends Component {
   render() {
     const payback = {accepted: 54, total: 75};
     const noPayback = {accepted: 12, total: 25};
+    const threshold = 750;
 
     return (
       <div className="App">
         <div className='grid-container'>
-        <PeopleViewer/>
+        <PeopleViewer
+          threshold={threshold}
+        />
         <LabelReporter
-          threshold={800}
+          threshold={threshold}
         />
         <div className='plot_area'>
         <Plot
-          size={[500,500]}
+          size={[700,700]}
         />
         </div>
         <TableReporter
