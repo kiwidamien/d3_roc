@@ -76,9 +76,15 @@ const TableReporter = (props) => {
 
     <div className='model_choice'>
       <h5>Model choice</h5>
-      <input type="radio" name="gender" value="male"/> Perfect Model<br/>
-      <input type="radio" name="gender" value="female"/> Model 1<br/>
-      <input type="radio" name="gender" value="other"/> Model 2
+      {
+        ['Perfect Model', 'Model 1', 'Model 2'].map((name, index) => {
+          return (<div><input type="radio" name="model" value={index}
+               checked={props.modelNumber === index}
+               onChange={props.onChange} />&nbsp;&nbsp;{name}</div>
+             );
+           }
+         )
+      }
     </div>
   </div>
   );

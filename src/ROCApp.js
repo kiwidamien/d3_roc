@@ -14,16 +14,17 @@ class ROCApp extends Component {
     this.state = {
       threshold: 750,
       people: {
-        andy: {payback: false, score: 600},
-        heather: {payback: false, score: 620},
-        bobby: {payback: true, score: 650},
-        charles: {payback: false, score: 680},
-        inga: {payback: true, score: 710},
-        del: {payback: false, score:740},
-        elenor: {payback:true, score: 780},
-        frankie: {payback:true, score: 810},
-        martha: {payback: true, score: 840}
-      }
+        andy: {payback: false, score: [650, 600, 610]},
+        heather: {payback: false, score: [630, 620, 650]},
+        bobby: {payback: true, score: [715, 650, 630]},
+        charles: {payback: false, score: [670, 680, 760]},
+        inga: {payback: true, score: [750, 710, 780]},
+        del: {payback: false, score:[680, 740, 720]},
+        elenor: {payback:true, score: [800, 780, 680]},
+        frankie: {payback:true, score: [820, 810, 810]},
+        martha: {payback: true, score: [845, 840, 845]}
+      },
+      modelNumber: 1
     }
   }
 
@@ -33,7 +34,7 @@ class ROCApp extends Component {
     Object.values(this.state.people).forEach(
       person => {
         const obj = (person.payback ? payback : noPayback);
-        if (person.score >= this.state.threshold) {
+        if (person.score[this.state.modelNumber] >= this.state.threshold) {
           obj.accepted += 1
         }
         obj.total += 1;
@@ -44,8 +45,9 @@ class ROCApp extends Component {
   }
 
   getPlayerOrder() {
+    const modelNumber = this.state.modelNumber;
     return Object.values(this.state.people)
-                 .sort((a,b) => a.score - b.score)
+                 .sort((a,b) => a.score[modelNumber] - b.score[modelNumber])
                  .map(person => person.payback);
   }
 
@@ -60,6 +62,7 @@ class ROCApp extends Component {
           threshold={threshold}
           changeThreshold={(e) => this.setState({threshold: e.target.value})}
           people={this.state.people}
+          modelNumber={this.state.modelNumber}
         />
         <LabelReporter
           threshold={threshold}
@@ -74,6 +77,8 @@ class ROCApp extends Component {
         <TableReporter
           payback={payback}
           noPayback={noPayback}
+          modelNumber={this.state.modelNumber}
+          onChange={(e) => this.setState({modelNumber: e.target.value})}
         />
         </div>
 
