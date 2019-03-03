@@ -29,11 +29,9 @@ const drawLine = (xCoords, yCoords, xScale, yScale) => {
 
 const Plot = (props) => {
   const [svgWidth, svgHeight] = props.size;
-  const players = [false, true, false, true, true];
-  const index = 4;
-  const fpr = falsePositiveRate(players), tpr = truePositiveRate(players);
+  const index = props.index || 0;
+  const fpr = falsePositiveRate(props.players), tpr = truePositiveRate(props.players);
 
-  const margins = 140;
   const margin = { top: 20, right: 20, bottom: 30, left: 60 };
 
   const xScale = scaleLinear().domain([0,1])
@@ -48,7 +46,8 @@ const Plot = (props) => {
 
     <svg width={svgWidth} height={svgHeight}>
       <rect x={margin.left} width={svgWidth-2*margin.left-margin.right}
-            y={margin.top} height={svgHeight-2*margin.top-margin.bottom} fill="cyan" fill-opacity="0.1"/>
+            y={margin.top} height={svgHeight-2*margin.top-margin.bottom}
+            fill="#9DF" fill-opacity="0.3"/>
       <Axes
         scales={{xScale, yScale}}
         margins={margin}

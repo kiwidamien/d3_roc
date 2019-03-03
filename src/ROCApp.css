@@ -33,23 +33,68 @@
 }
 
 .people_area{
-  background-color: #787;
+  background-color: #FEFEFE;
   grid-area: people_area;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  align-items: center;
 }
 
 .label_area{
-  background-color: #CCC;
+  background-color: #FEFEFE;
   grid-area: label_area;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.label_area .title {
+  font-size: 32pt;
+}
+
+.label_area .suntitle {
+  font-size: 12pt;
 }
 
 .plot_area{
-  background-color: #CCC;
+  background-color: #DCDCDC;
   grid-area: plot_area;
 }
 
 .table_area{
-  background-color: #FF0;
+  background-color: #FEFEFE;
   grid-area: table_area;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.table_area table{
+  width: 100%;
+}
+
+.table_area th, .table_area td {
+  padding: 12px;
+  text-align: middle;
+  background-color: #F5F5F5;
+}
+
+.table_area th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.table_area tr:nth-child(even) {background-color: #f2f2f2;}
+
+.actual_payment_class {
+  text-align: left;
+  font-weight: bold;
+  width: 20ex;
 }
 
 .summary_area{
@@ -57,10 +102,19 @@
   grid-area: summary_area;
 }
 
+.model_choice{
+  text-align: left;
+  float: left;
+  padding: 10px 10px;
+  width: 100%;
+  border: 1px solid #000;
+}
 .grid-container {
   display: grid;
+  margin: 20px;
+  border: 1px solid #444;
   grid-template-areas:
-    'people_area people_area people_area label_area'
-    'plot_area plot_area plot_area table_area'
-    'summary_area summary_area summary_area summary_area'
+    'people_area people_area label_area'
+    'plot_area plot_area table_area'
+    'summary_area summary_area summary_area'
 }
